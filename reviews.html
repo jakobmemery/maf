@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essential Gummies Special Offer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-r from-green-400 to-blue-500">
+<div class="flex flex-col items-center px-4 py-8 min-h-screen justify-center">
+  <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-md">
+    <h1 class="text-3xl font-bold text-center text-gray-800">Unlock Your Special Gummies Discount!</h1>
+    <div class="mt-6">
+      <img src="image_a4C.webp" alt="Essential Gummies" class="w-full h-auto rounded-lg">
+    </div>
+    <p class="text-gray-600 mt-4 text-center">Join the wellness revolution with Essential Gummies, now at a special price!</p>
+    <div class="flex justify-between items-center mt-4">
+      <div class="flex items-center">
+        <i class="fas fa-check-circle text-green-500"></i>
+        <span class="ml-2 text-gray-700">Natural Ingredients</span>
+      </div>
+      <div class="flex items-center">
+        <i class="fas fa-check-circle text-green-500"></i>
+        <span class="ml-2 text-gray-700">Fast Results</span>
+      </div>
+    </div>
+    <div class="mt-8">
+      <button onclick="redirectToAffiliate('discount');" class="block w-full bg-gradient-to-r from-green-500 to-blue-600 text-white py-3 rounded-lg text-center font-medium hover:from-green-600 hover:to-blue-700 transition-colors duration-300">
+        Claim 50% Discount Now!
+      </button>
+    </div>
+  </div>
+
+  <div class="bg-white mt-10 p-6 rounded-xl shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center text-gray-800">Find Your Perfect Plan</h2>
+    <p class="text-gray-600 mt-2 text-center">Select your age range for personalized options.</p>
+    <div class="flex justify-around mt-4">
+      <!-- Modified to use buttons for consistency with onclick event -->
+      <button onclick="redirectToAffiliate('18-24');" class="text-center">
+        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
+          <span class="text-gray-800 text-lg">18-24</span>
+        </div>
+      </button>
+      <button onclick="redirectToAffiliate('25-34');" class="text-center">
+        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
+          <span class="text-gray-800 text-lg">25-34</span>
+        </div>
+      </button>
+      <button onclick="redirectToAffiliate('35-55');" class="text-center">
+        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
+          <span class="text-gray-800 text-lg">35-55</span>
+        </div>
+      </button>
+      <button onclick="redirectToAffiliate('55+');" class="text-center">
+        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
+          <span class="text-gray-800 text-lg">55+</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer class="text-center text-white mt-8">
+  <small>© 2024 Essential Gummies Co.</small>
+</footer>
+
+<script>
+  // Re-use the redirectToAffiliate function from the second HTML snippet
+  function redirectToAffiliate(country) {
+    const currentDomain = window.location.hostname;
+    history.pushState({}, '', '/' + country);
+    fetch('/.netlify/functions/redirect?sub1=' + encodeURIComponent(currentDomain))
+      .then(response => {
+          if (response.ok) {
+              return response.text();
+          }
+          throw new Error('Network response was not ok.');
+      })
+      .then(url => {
+          window.location.href = url;
+      })
+      .catch(error => {
+          console.error('Fetch error:', error);
+      });
+  }
+</script>
+</body>
+</html>
